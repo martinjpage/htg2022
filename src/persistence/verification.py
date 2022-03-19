@@ -22,3 +22,19 @@ def verify_active_dates(username, datastore):
 def verify_role(username, role, datastore):
     user_role = datastore.get_role(username)
     return user_role == role
+
+
+def verify_smart_device(username, requested_amount, smart_device):
+    return smart_device.authentiate(username) and smart_device.check_balance(requested_amount)
+
+
+def verify_supplier(username, energy_request, smart_meter):
+    if verify_smart_device(username, energy_request, smart_meter):
+        print("Seller authenticated. Energy available.")
+        return True
+
+
+def verify_buyer(username, wallet_request, smart_wallet):
+    if verify_smart_device(username, wallet_request, smart_wallet):
+        print("Buyer authenticated. Money available.")
+        return True

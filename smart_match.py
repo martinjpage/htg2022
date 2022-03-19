@@ -36,7 +36,7 @@ def argument_collector():
     update_settings.add_argument('-p', f'--{const.price}', help="Set your minimum sell price or maximum buy price (EUR)",
                                  type=float, required=True)
     update_settings.add_argument('-s', f'--{const.start}', help="Set the start date for transactions to run.",
-                       type=lambda d: dt.datetime.strptime(re.sub('[\.\:\/]', '-', d), '%Y-%m-%d').date(),
+                       type=lambda d: dt.datetime.strptime(re.sub('[\.\:\-]', '/', d), '%Y/%m/%d').date(),
                        default=dt.date.today())
     update_settings.add_argument('-e', f'--{const.end}', help="Set the end date for transactions to run.",
                        type=lambda d: dt.datetime.strptime(d, '%Y-%m-%d').date(), default=None)

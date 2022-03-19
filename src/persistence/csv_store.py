@@ -90,15 +90,15 @@ class CSVStore(DataStoreFacade):
     def update_orderbook(self):
         pass
 
-    def record_on_ledger(self, buyer, supplier, price, energy):
-        total_price = price * energy
+    def record_on_ledger(self, buyer, supplier, total_price, energy):
+        unit_price = total_price/energy
         today = dt.date.today()
         df = self._read_ledger()
-        new_row = {self._config.buyer: buyer, self._config.supplier: supplier, self._config.price: price,
+        new_row = {self._config.buyer: buyer, self._config.supplier: supplier, self._config.price: unit_price,
                    self._config.energy: energy, self._config.total_price: total_price, self._config.date: today}
         self._write_row_to_df(df, new_row, self._config.ledger_history)
         print(f"Recorded transaction between {buyer} (buyer) and {supplier} (supplier) for {energy} kWh at"
-              f"{price} EUR per kWh (total: {total_price} EUR).")
+              f"{unit_price} EUR per kWh (total: {total_price} EUR).")
 
     def _read_user_database(self) -> pd.DataFrame:
         return pd.read_csv(self._config.user_database)
