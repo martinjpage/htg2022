@@ -4,6 +4,7 @@ import src.services.constants as const
 
 from src.models.create_user import create_user
 from src.models.settings import update_user_settings, view_settings
+from src.models.transactions import create_offer, view_transaction_history
 
 
 def command_main(args):
@@ -19,3 +20,12 @@ def command_main(args):
 
     elif args[const.action] == const.view_settings:
         view_settings(args[const.username], args[const.password], datastore)
+
+    elif args[const.action] == const.supplier:
+        create_offer(args[const.username], args[const.password], const.supplier, args[const.energy], datastore)
+
+    elif args[const.action] == const.buyer:
+        create_offer(args[const.username], args[const.password], const.buyer, args[const.energy], datastore)
+
+    elif args[const.action] == const.history:
+        view_transaction_history(args[const.username], args[const.password], datastore)

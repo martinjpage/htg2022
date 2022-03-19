@@ -1,6 +1,6 @@
 import re
 import argparse
-from datetime import datetime
+import datetime as dt
 
 import src.services.constants as const
 from src.command_main import command_main
@@ -36,10 +36,10 @@ def argument_collector():
     update_settings.add_argument('-p', f'--{const.price}', help="Set your minimum sell price or maximum buy price (EUR)",
                                  type=float, required=True)
     update_settings.add_argument('-s', f'--{const.start}', help="Set the start date for transactions to run.",
-                       type=lambda d: datetime.strptime(re.sub('[\.\:\/]', '-', d), '%Y-%m-%d'),
-                       default=datetime.today().strftime('%Y-%m-%d'))
+                       type=lambda d: dt.datetime.strptime(re.sub('[\.\:\/]', '-', d), '%Y-%m-%d').date(),
+                       default=dt.date.today())
     update_settings.add_argument('-e', f'--{const.end}', help="Set the end date for transactions to run.",
-                       type=lambda d: datetime.strptime(d, '%Y-%m-%d'), default=None)
+                       type=lambda d: dt.datetime.strptime(d, '%Y-%m-%d').date(), default=None)
 
     # argument to view user settings
     view_settings = subparsers.add_parser('view_settings', help="View your current role (supplier or buyer), price "
@@ -67,8 +67,14 @@ def argument_collector():
 if __name__ == '__main__':
     # args = argument_collector()
     # print(args)
-    # args = {'action': 'signup', 'username': 'mjp5', 'password': 'ab12', 'location': 'Italy'}
+    # args = {'action': 'signup', 'username': 'mjp2', 'password': 'mjp2', 'location': 'Italy'}
+    # args = {'action': 'update_settings', 'username': 'mjp2', 'password': 'mjp2', 'role': 'buyer', 'price': 1.5,
+    #         'start':  dt.datetime(2022, 3, 19).date(), 'end': dt.datetime(2022, 4, 19).date()}
+    # args = {'action': 'signup', 'username': 'mjp', 'password': 'mjp', 'location': 'Italy'}
     # args = {'action': 'update_settings', 'username': 'mjp', 'password': 'mjp', 'role': 'supplier', 'price': 1.5,
-    #         'start':  datetime(2022, 3, 19, 0, 0), 'end': None}
-    args = {'action': 'view_settings', 'username': 'mjp', 'password': 'mjp'}
+    #         'start':  dt.datetime(2022, 3, 19).date(), 'end': dt.datetime(2022, 4, 19).date()}
+    # args = {'action': 'view_settings', 'username': 'mjp', 'password': 'mjp'}
+    # args = {'action': 'supplier', 'username': 'mjp', 'password': 'mjp', 'energy': 5}
+    # args = {'action': 'buyer', 'username': 'mjp2', 'password': 'mjp2', 'energy': 5}
+    args = {'action': 'history', 'username': 'mjp2', 'password': 'mjp2'}
     command_main(args)

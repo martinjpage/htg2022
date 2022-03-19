@@ -1,1 +1,5 @@
-﻿
+username,location,role,energy,price,end_date
+mjp,Italy,supplier,5,1.5,2022-04-19
+mjp2,Italy,buyer,5,1.5,2022-04-19
+mjp,Italy,supplier,5,1.5,2022-04-19
+mjp2,Italy,buyer,5,1.5,2022-04-19

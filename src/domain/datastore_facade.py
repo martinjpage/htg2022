@@ -19,7 +19,7 @@ class DataStoreFacade(ABC):
         pass
 
     @abstractmethod
-    def get_role(self):
+    def get_role(self, username):
         pass
 
     @abstractmethod
@@ -35,7 +35,7 @@ class DataStoreFacade(ABC):
         pass
 
     @abstractmethod
-    def add_offer(self, username, role, energy, price, end_date):
+    def add_offer(self, username, location, role, energy, price, end_date):
         pass
 
     @abstractmethod
@@ -47,5 +47,5 @@ class DataStoreFacade(ABC):
         pass
 
     @abstractmethod
-    def record_on_blockchain(self):
+    def record_on_ledger(self, buyer, supplier, price, energy):
         pass
