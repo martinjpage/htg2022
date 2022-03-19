@@ -11,7 +11,7 @@ class DataStoreFacade(ABC):
         pass
 
     @abstractmethod
-    def update_settings(self, username, role, price, state_date, end_date):
+    def update_user_settings(self, username, role, price, state_date, end_date):
         pass
 
     @abstractmethod

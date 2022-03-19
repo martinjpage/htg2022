@@ -1,5 +1,3 @@
 username,password,location,role,price,start_date,end_date
-mjp,mjp,Italy,,,,
+mjp,mjp,Italy,supplier,1.5,2022-03-19 00:00:00,
 mjp2,ab12,Italy,,,,
-mjp10,ab12,Italy,,,,
-mjp5,ab12,Italy,,,,
