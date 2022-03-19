@@ -3,7 +3,7 @@ from collections import namedtuple
 
 
 def csv_store_configuration():
-    user_database = os.path.join("databases", "user_database.csv")
+    user_database = os.path.join("src", "databases", "user_database.csv")
     orderbook = os.path.join("databases", "orderbook.csv")
     blockchain_history = os.path.join("databases", "blockchain_history.csv")
 

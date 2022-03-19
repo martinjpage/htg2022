@@ -1,3 +1,6 @@
+import pandas as pd
+import numpy as np
+
 from src.domain.datastore_facade import DataStoreFacade
 
 
@@ -6,10 +9,17 @@ class CSVStore(DataStoreFacade):
         self._config = config
 
     def add_user(self, username, password, location):
-        pass
+        df = pd.read_csv(self._config.user_database)
+        new_row = {self._config.username: username, self._config.password: password,  self._config.location: location}
+        new_row = pd.DataFrame([new_row], columns=new_row.keys())
+        df = pd.concat([df, new_row], axis=0)
+        df.to_csv(self._config.user_database, index=False)
+        print(f"New user with id '{username}' added to database.")
 
-    def get_all_user_credentials(self):
-        pass
+    def get_all_usernames(self) -> np.array:
+        """Return array of all usernames in the user database"""
+        df = pd.read_csv(self._config.user_database)
+        return df[self._config.username].values
 
     def update_settings(self, username, role, price, state_date, end_date):
         pass

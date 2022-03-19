@@ -7,7 +7,7 @@ class DataStoreFacade(ABC):
         pass
 
     @abstractmethod
-    def get_all_user_credentials(self):
+    def get_all_usernames(self):
         pass
 
     @abstractmethod
