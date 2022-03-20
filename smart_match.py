@@ -50,13 +50,13 @@ def argument_collector():
     supplier = subparsers.add_parser(const.supplier, help="Perform a sell transaction as a supplier.",
                                      parents=[parent_parser])
 
-    supplier.add_argument('-e', f'--{const.energy}', help="Give the amount of energy you want to sell in kWh.", 
+    supplier.add_argument('-e', f'--{const.energy}', help="Give the amount of energy you want to sell in kW.",
                           type=float, required=True)
 
     # arguments to transact as a buyer
     buyer = subparsers.add_parser(const.buyer, help="Perform a buy transaction as a buyer.", parents=[parent_parser])
 
-    buyer.add_argument('-e', f'--{const.energy}', help="Give the amount of energy you want to buy in kWh.", type=float,
+    buyer.add_argument('-e', f'--{const.energy}', help="Give the amount of energy you want to buy in kW.", type=float,
                        required=True)
 
     # argument to view transaction history
