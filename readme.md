@@ -71,49 +71,49 @@ Trade energy as a buyer or supplier by setting your minimum sell price as a supp
 
 ### USAGE EXAMPLES
 
-`> python .\smart_match.py **signup** --username martin --password martin123 --meter_id smartmartin --location Italy`
+`> python .\smart_match.py signup --username martin --password martin123 --meter_id smartmartin --location Italy`
 
 New user with id 'leonardo' and meter id 'smartmartin' added to user database.
 
-`> python .\smart_match.py **signup** --username leonardo --password leo123 --meter_id smartleo --location Italy`
+`> python .\smart_match.py signup --username leonardo --password leo123 --meter_id smartleo --location Italy`
 
 New user with id 'leonardo' and meter id 'smartleo' added to user database.
 
-`> python .\smart_match.py **signup** --username leonardo --password leo123 --meter_id smartleo --location Italy`
+`> python .\smart_match.py signup --username leonardo --password leo123 --meter_id smartleo --location Italy`
 
 ValueError: A user with name “leonardo" already exists.
 
-`> python .\smart_match.py **signup** --username natalia --password nat123 --meter_id smartmartin --location Italy`
+`> python .\smart_match.py signup --username natalia --password nat123 --meter_id smartmartin --location Italy`
 
 ValueError: A meter with meter id "smartmartin" already exists
 
-`> python .\smart_match.py **update_settings** --username martin --password martin123 --role supplier --price 0.15`
+`> python .\smart_match.py update_settings --username martin --password martin123 --role supplier --price 0.15`
 
 Role (supplier), price (0.15), start (2022-03-20) and end (None) date updated for martin.
 
-`> python .\smart_match.py **update_settings** --username leonardo --password leo123 --role buyer --price 0.17`
+`> python .\smart_match.py update_settings --username leonardo --password leo123 --role buyer --price 0.17`
 
 Role (buyer), price (0.17), start (2022-03-20) and end (None) date updated for leonardo.
 
-`> python .\smart_match.py **view_settings** --username martin --password martin123`
+`> python .\smart_match.py view_settings --username martin --password martin123`
 
 username  password location   meter_id  role price start_date end_date
 
 0  martin martin123  Italy smartmartin supplier  0.15 2022-03-20    NaN
 
-`> python .\smart_match.py **view_settings** --username leonardo --password leo123`
+`> python .\smart_match.py view_settings --username leonardo --password leo123`
 
 |      | username | password | location | meter_id | role  | price | start_date | end_date |
 | ---- | -------- | -------- | -------- | -------- | ----- | ----- | ---------- | -------- |
 | 0    | leonardo | leo123   | Italy    | smartleo | buyer | 0.17  | 2022-03-20 | NaN      |
 
-`> python .\smart_match.py **supplier** --username martin --password martin123 --energy 5`
+`> python .\smart_match.py supplier --username martin --password martin123 --energy 5`
 
 New supplier offer from smartmartin added to orderbook.
 
 Currently there are no buy offers in the orderbook. No match can be made at present.
 
-`> python .\smart_match.py **buyer** --username leonardo --password leo123 --energy 3`
+`> python .\smart_match.py buyer --username leonardo --password leo123 --energy 3`
 
 New supplier offer from smartmartin added to orderbook.
 
@@ -143,7 +143,7 @@ Recorded transaction between smartleo (buyer) and smartmartin (supplier) for 3.0
 
 Currently there are no buy offers in the orderbook. No match can be made at present.
 
-`> python .\smart_match.py **history** --username martin --password martin123`
+`> python .\smart_match.py history --username martin --password martin123`
 
 No buyer history.
 
@@ -153,7 +153,7 @@ Supplier History:
 | ---- | -------- | ----------- | ----- | ------ | ----------- | ---------- |
 | 0    | smartleo | smartmartin | 0.17  | 3.0    | 0.51        | 2022-03-20 |
 
-`> python .\smart_match.py **history** --username leonardo --password leo123`
+`> python .\smart_match.py history --username leonardo --password leo123`
 
 Buyer History:
 
