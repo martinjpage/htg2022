@@ -103,9 +103,9 @@ username  password location   meter_id  role price start_date end_date
 
 `> python .\smart_match.py **view_settings** --username leonardo --password leo123`
 
-username  password location   meter_id  role price start_date end_date
-
-0  leonardo leo123  Italy smartleo buyer  0.17 2022-03-20    NaN
+|      | username | password | location | meter_id | role  | price | start_date | end_date |
+| ---- | -------- | -------- | -------- | -------- | ----- | ----- | ---------- | -------- |
+| 0    | leonardo | leo123   | Italy    | smartleo | buyer | 0.17  | 2022-03-20 | NaN      |
 
 `> python .\smart_match.py **supplier** --username martin --password martin123 --energy 5`
 
@@ -135,9 +135,9 @@ smartleo's wallet balanced updated by -0.51 EUR.
 
 Removing fulfilled orders from orderbook:
 
-  meter_id location  role energy price end_date
-
-1 smartleo  Italy buyer   0.0  0.17    NaN
+|      | meter_id | location | role  | energy | price | end_date |
+| ---- | -------- | -------- | ----- | ------ | ----- | -------- |
+| 1    | smartleo | Italy    | buyer | 0.0    | 0.17  | NaN      |
 
 Recorded transaction between smartleo (buyer) and smartmartin (supplier) for 3.0 kWh at 0.17 EUR per kWh (total: 0.51 EUR).
 
@@ -149,16 +149,16 @@ No buyer history.
 
 Supplier History:
 
-   buyer   supplier price energy total_price    date
-
-0 smartleo smartmartin  0.17   3.0     0.51 2022-03-20
+|      | buyer    | supplier    | price | energy | total_price | date       |
+| ---- | -------- | ----------- | ----- | ------ | ----------- | ---------- |
+| 0    | smartleo | smartmartin | 0.17  | 3.0    | 0.51        | 2022-03-20 |
 
 `> python .\smart_match.py **history** --username leonardo --password leo123`
 
 Buyer History:
 
-   buyer   supplier price energy total_price    date
-
-0 smartleo smartmartin  0.17   3.0     0.51 2022-03-20
+|      | buyer    | supplier    | price | energy | total_price | date       |
+| ---- | -------- | ----------- | ----- | ------ | ----------- | ---------- |
+| 0    | smartleo | smartmartin | 0.17  | 3.0    | 0.51        | 2022-03-20 |
 
 No seller history.
