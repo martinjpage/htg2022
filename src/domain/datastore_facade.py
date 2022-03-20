@@ -43,9 +43,13 @@ class DataStoreFacade(ABC):
         pass
 
     @abstractmethod
-    def update_orderbook(self):
+    def read_orderbook(self):
         pass
 
     @abstractmethod
-    def record_on_ledger(self, buyer, supplier, price, energy):
+    def update_orderbook(self, total_energy, supplier_index, buyer_index):
+        pass
+
+    @abstractmethod
+    def record_on_ledger(self, buyer, supplier, unit_price, total_price, energy):
         pass

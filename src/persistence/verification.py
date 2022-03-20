@@ -16,7 +16,7 @@ def verify_password(username: str, password: str, datastore):
 def verify_active_dates(username, datastore):
     start_date, end_date = datastore.get_active_dates(username)
     today = dt.date.today()
-    return start_date >= today and (end_date is None or end_date >= today)
+    return today >= start_date and (end_date is None or end_date >= today)
 
 
 def verify_role(username, role, datastore):

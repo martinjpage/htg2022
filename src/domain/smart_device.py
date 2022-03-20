@@ -13,5 +13,5 @@ class SmartDevice:
         return requested_amount < self._balance
 
     @abstractmethod
-    def update_balance(self, requested_amount):
+    def update_balance(self, requested_amount, username):
         pass

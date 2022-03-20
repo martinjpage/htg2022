@@ -1,3 +1,4 @@
+import re
 import pandas as pd
 import numpy as np
 import datetime as dt
@@ -11,7 +12,7 @@ class CSVStore(DataStoreFacade):
 
     def add_user(self, username, password, location):
         df = self._read_user_database()
-        new_row = {self._config.username: username, self._config.password: password,  self._config.location: location}
+        new_row = {self._config.username: username, self._config.password: password, self._config.location: location}
         self._write_row_to_df(df, new_row, self._config.user_database)
         print(f"New user with id '{username}' added to user database.")
 
@@ -44,9 +45,10 @@ class CSVStore(DataStoreFacade):
     def get_active_dates(self, username):
         user_details = self._get_user_details(username)
         start_date = user_details[self._config.start_date].values[0]
-        start_date = dt.datetime.strptime(start_date, '%Y-%m-%d').date()
+        start_date = dt.datetime.strptime(re.sub('[\.\:\-]', '/', start_date), '%Y/%m/%d').date()
         end_date = self._get_end_date(user_details)
-        end_date = dt.datetime.strptime(end_date, '%Y-%m-%d').date()
+        end_date = None if np.isnan(end_date) else dt.datetime.strptime(
+            re.sub('[\.\:\-]', '/', end_date), '%Y/%m/%d').date()
         return start_date, end_date
 
     def get_end_date(self, username):
@@ -66,7 +68,7 @@ class CSVStore(DataStoreFacade):
 
     def add_offer(self, username, location, role, energy, price, end_date):
         df = self._read_orderbook()
-        new_row = {self._config.username: username, self._config.location: location,  self._config.role: role,
+        new_row = {self._config.username: username, self._config.location: location, self._config.role: role,
                    self._config.energy: energy, self._config.price: price, self._config.end_date: end_date}
         self._write_row_to_df(df, new_row, self._config.orderbook)
         print(f"New {role} offer from {username} added to orderbook.")
@@ -87,18 +89,27 @@ class CSVStore(DataStoreFacade):
             print("Supplier History:")
             print(df[supplier_history_mask])
 
-    def update_orderbook(self):
-        pass
+    def read_orderbook(self):
+        return self._read_orderbook()
 
-    def record_on_ledger(self, buyer, supplier, total_price, energy):
-        unit_price = total_price/energy
+    def update_orderbook(self, total_energy, supplier_index, buyer_index):
+        df = self._read_orderbook()
+        df.at[supplier_index, self._config.energy] -= total_energy
+        df.at[buyer_index, self._config.energy] -= total_energy
+        zero_rows = df[self._config.energy] == 0
+        if zero_rows.any():
+            print('Removing fulfilled orders from orderbook:', '\n', df[zero_rows])
+        df = df[~zero_rows]
+        df.to_csv(self._config.orderbook, index=False)
+
+    def record_on_ledger(self, buyer, supplier, unit_price, total_price, energy):
         today = dt.date.today()
         df = self._read_ledger()
         new_row = {self._config.buyer: buyer, self._config.supplier: supplier, self._config.price: unit_price,
                    self._config.energy: energy, self._config.total_price: total_price, self._config.date: today}
         self._write_row_to_df(df, new_row, self._config.ledger_history)
         print(f"Recorded transaction between {buyer} (buyer) and {supplier} (supplier) for {energy} kWh at"
-              f"{unit_price} EUR per kWh (total: {total_price} EUR).")
+              f" {unit_price} EUR per kWh (total: {total_price:.2f} EUR).")
 
     def _read_user_database(self) -> pd.DataFrame:
         return pd.read_csv(self._config.user_database)

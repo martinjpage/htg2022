@@ -69,12 +69,12 @@ if __name__ == '__main__':
     # print(args)
     # args = {'action': 'signup', 'username': 'mjp2', 'password': 'mjp2', 'location': 'Italy'}
     # args = {'action': 'update_settings', 'username': 'mjp2', 'password': 'mjp2', 'role': 'buyer', 'price': 1.5,
-    #         'start':  dt.datetime(2022, 3, 19).date(), 'end': dt.datetime(2022, 4, 19).date()}
+    #         'start':  dt.datetime(2022, 3, 19).date(), 'end': None}
     # args = {'action': 'signup', 'username': 'mjp', 'password': 'mjp', 'location': 'Italy'}
     # args = {'action': 'update_settings', 'username': 'mjp', 'password': 'mjp', 'role': 'supplier', 'price': 1.5,
     #         'start':  dt.datetime(2022, 3, 19).date(), 'end': dt.datetime(2022, 4, 19).date()}
     # args = {'action': 'view_settings', 'username': 'mjp', 'password': 'mjp'}
-    # args = {'action': 'supplier', 'username': 'mjp', 'password': 'mjp', 'energy': 5}
+    args = {'action': 'supplier', 'username': 'mjp', 'password': 'mjp', 'energy': 2}
     # args = {'action': 'buyer', 'username': 'mjp2', 'password': 'mjp2', 'energy': 5}
-    args = {'action': 'history', 'username': 'mjp2', 'password': 'mjp2'}
+    # args = {'action': 'history', 'username': 'mjp2', 'password': 'mjp2'}
     command_main(args)

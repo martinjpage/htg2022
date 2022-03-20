@@ -1,3 +1,5 @@
 username,password,location,role,price,start_date,end_date
-mjp2,mjp2,Italy,buyer,1.5,2022-03-19,2022-04-19
-mjp,mjp,Italy,supplier,1.5,2022-03-19,2022-04-19
+lt,lt,Italy,buyer,0.2,2022/03/19,
+nn,nn,Italy,supplier,0.19,2022/03/19,
+eeh,eeh,Italy,buyer,0.12,2022/03/19,
+mjp,mjp,Italy,supplier,0.1,2022/03/19,
