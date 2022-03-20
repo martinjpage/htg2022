@@ -1,5 +1,3 @@
-username,password,location,role,price,start_date,end_date
-lt,lt,Italy,buyer,0.2,2022/03/19,
-nn,nn,Italy,supplier,0.19,2022/03/19,
-eeh,eeh,Italy,buyer,0.12,2022/03/19,
-mjp,mjp,Italy,supplier,0.1,2022/03/19,
+username,password,location,meter_id,role,price,start_date,end_date
+leonardo,leo123,Italy,smartleo,supplier,0.15,2022-03-20,
+martin,martin123,Italy,smartmartin,buyer,0.18,2022-03-20,

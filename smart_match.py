@@ -25,6 +25,7 @@ def argument_collector():
 
     # arguments to create a new user
     create_user = subparsers.add_parser(const.signup, help="Create user profile.", parents=[parent_parser])
+    create_user.add_argument('-id', f'--{const.meter_id}', help="Input your smart meter ID.", type=str, required=True)
     create_user.add_argument('-l', f'--{const.location}', help="Choose a location.", type=str, choices=['Italy'], required=True)
 
     # arguments to update the user settings
@@ -53,7 +54,7 @@ def argument_collector():
                           type=float, required=True)
 
     # arguments to transact as a buyer
-    buyer = subparsers.add_parser(const.buyer, help="Perform a buy transaction as a buyer.")
+    buyer = subparsers.add_parser(const.buyer, help="Perform a buy transaction as a buyer.", parents=[parent_parser])
 
     buyer.add_argument('-e', f'--{const.energy}', help="Give the amount of energy you want to buy in kWh.", type=float,
                        required=True)
@@ -65,16 +66,9 @@ def argument_collector():
 
 
 if __name__ == '__main__':
-    # args = argument_collector()
-    # print(args)
-    # args = {'action': 'signup', 'username': 'mjp2', 'password': 'mjp2', 'location': 'Italy'}
-    # args = {'action': 'update_settings', 'username': 'mjp2', 'password': 'mjp2', 'role': 'buyer', 'price': 1.5,
-    #         'start':  dt.datetime(2022, 3, 19).date(), 'end': None}
-    # args = {'action': 'signup', 'username': 'mjp', 'password': 'mjp', 'location': 'Italy'}
-    # args = {'action': 'update_settings', 'username': 'mjp', 'password': 'mjp', 'role': 'supplier', 'price': 1.5,
-    #         'start':  dt.datetime(2022, 3, 19).date(), 'end': dt.datetime(2022, 4, 19).date()}
-    # args = {'action': 'view_settings', 'username': 'mjp', 'password': 'mjp'}
-    args = {'action': 'supplier', 'username': 'mjp', 'password': 'mjp', 'energy': 2}
+    args = argument_collector()
+    print(args)
+    # args = {'action': 'supplier', 'username': 'leonardo', 'password': 'leo123', 'energy': 10}
     # args = {'action': 'buyer', 'username': 'mjp2', 'password': 'mjp2', 'energy': 5}
     # args = {'action': 'history', 'username': 'mjp2', 'password': 'mjp2'}
     command_main(args)

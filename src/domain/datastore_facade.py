@@ -3,11 +3,15 @@ from abc import ABC, abstractmethod
 
 class DataStoreFacade(ABC):
     @abstractmethod
-    def add_user(self, username, password, location):
+    def add_user(self, username, password, meter_id, location):
         pass
 
     @abstractmethod
     def get_all_usernames(self):
+        pass
+
+    @abstractmethod
+    def get_all_id(self):
         pass
 
     @abstractmethod
@@ -16,6 +20,10 @@ class DataStoreFacade(ABC):
 
     @abstractmethod
     def view_settings(self, username):
+        pass
+
+    @abstractmethod
+    def get_meter_id(self, username):
         pass
 
     @abstractmethod

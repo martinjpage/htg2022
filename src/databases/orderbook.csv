@@ -1,3 +1,2 @@
-username,location,role,energy,price,end_date
-lt,Italy,buyer,2,0.19,
-eeh,Italy,buyer,1,0.1,
+meter_id,location,role,energy,price,end_date
+smartleo,Italy,supplier,5.0,0.15,

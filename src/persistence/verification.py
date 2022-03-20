@@ -7,6 +7,12 @@ def verify_user(username: str, datastore):
         return False
     return username in all_users
 
+def verify_id(meter_id, datastore):
+    all_id = datastore.get_all_id()
+    if len(all_id) == 0:
+        return False
+    return meter_id in all_id
+
 
 def verify_password(username: str, password: str, datastore):
     user_password = datastore.get_password(username)

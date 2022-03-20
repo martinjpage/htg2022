@@ -11,10 +11,11 @@ def create_offer(username, password, role, energy, datastore):
     if not verify_role(username, role, datastore):
         raise ValueError(f"You have the incorrect role to perform this transaction. You need to be a {role}.")
 
+    meter_id = datastore.get_meter_id(username)
     location = datastore.get_location(username)
     price = datastore.get_price(username)
     end_date = datastore.get_end_date(username)
-    datastore.add_offer(username, location, role, energy, price, end_date)
+    datastore.add_offer(meter_id, location, role, energy, price, end_date)
 
 
 def execute_offer(args, role, datastore, matcher):

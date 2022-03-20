@@ -1,5 +1,2 @@
 buyer,supplier,price,energy,total_price,date
-lt,nn,0.19,6,1.14,2022-03-20
-eeh,mjp,0.1,4,0.4,2022-03-20
-lt,mjp,0.1,2,0.2,2022-03-20
-lt,mjp,0.19,2,0.38,2022-03-20
+smartmartin,smartleo,0.18,5.0,0.8999999999999999,2022-03-20
