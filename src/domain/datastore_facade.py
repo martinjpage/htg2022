@@ -47,7 +47,7 @@ class DataStoreFacade(ABC):
         pass
 
     @abstractmethod
-    def view_history(self, username):
+    def view_history(self, meter_id):
         pass
 
     @abstractmethod

@@ -29,4 +29,5 @@ def execute_offer(args, role, datastore, matcher):
 def view_transaction_history(username, password, datastore):
     if not verify_user(username, datastore) or not verify_password(username, password, datastore):
         raise ValueError("Could not verify username and password")
-    datastore.view_history(username)
+    meter_id = datastore.get_meter_id(username)
+    datastore.view_history(meter_id)

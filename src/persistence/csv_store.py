@@ -82,16 +82,16 @@ class CSVStore(DataStoreFacade):
         self._write_row_to_df(df, new_row, self._config.orderbook)
         print(f"New {role} offer from {meter_id} added to orderbook.")
 
-    def view_history(self, username):
+    def view_history(self, meter_id):
         df = self._read_ledger()
-        buyer_history_mask = df[self._config.buyer] == username
+        buyer_history_mask = df[self._config.buyer] == meter_id
         if not buyer_history_mask.any():
             print("No buyer history.")
         else:
             print("Buyer History:")
             print(df[buyer_history_mask])
 
-        supplier_history_mask = df[self._config.supplier] == username
+        supplier_history_mask = df[self._config.supplier] == meter_id
         if not supplier_history_mask.any():
             print("No seller history.")
         else:

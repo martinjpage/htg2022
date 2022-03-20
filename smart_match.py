@@ -67,8 +67,4 @@ def argument_collector():
 
 if __name__ == '__main__':
     args = argument_collector()
-    print(args)
-    # args = {'action': 'supplier', 'username': 'leonardo', 'password': 'leo123', 'energy': 10}
-    # args = {'action': 'buyer', 'username': 'mjp2', 'password': 'mjp2', 'energy': 5}
-    # args = {'action': 'history', 'username': 'mjp2', 'password': 'mjp2'}
     command_main(args)

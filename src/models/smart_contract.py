@@ -23,14 +23,14 @@ def execute_smart_contract(match, datastore):
 
 def calculate_transaction(energy_available, energy_requested, price, supplier_username, buyer_username):
     if energy_available >= energy_requested:
-        print(f"{supplier_username} can meet the full energy request from {buyer_username} of {energy_requested} kWh. "
+        print(f"{supplier_username} can meet the full energy request from {buyer_username} of {energy_requested} kW. "
               f"Transaction will occur at a unit price of {price} EUR.")
         total_price = energy_requested * price
         total_energy = energy_requested
         return total_price, total_energy
 
     elif energy_available < energy_requested:
-        print(f"{supplier_username} can partially meet the request from {buyer_username} and supply {energy_available} kWh"
+        print(f"{supplier_username} can partially meet the request from {buyer_username} and supply {energy_available} kW"
               f" of the requested {energy_requested} kWh. Transaction will occur at a unit price of {price} EUR.")
         total_price = energy_available * price
         total_energy = energy_available
